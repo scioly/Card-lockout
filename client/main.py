@@ -11,7 +11,6 @@ def runLoop( config ):
 	while True:
 		swipe = input()
 
-		# check to see that this assumption of ID length is correct
 		cardNumber = swipe
 		print( 'The last input was ' + cardNumber )
 
