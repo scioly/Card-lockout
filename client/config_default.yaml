@@ -1,0 +1,4 @@
+serverAddress: 1.2.3.4
+serverPort: 5555
+
+thisDevice: 3DPrinter
