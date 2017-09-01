@@ -34,6 +34,10 @@ def returnArgs():
 #################
 
 
+##########################
+# Admin interface routes #
+##########################
+
 @app.route( '/login', methods=['GET', 'POST'] )
 def login():
 	"""
@@ -54,15 +58,13 @@ def users():
 	This route will display the list of currently registered users, along with their authorizations, registration
 	dates, and other info.
 	"""
-	return request.path
-
-
-@app.route( '/users/new', methods=['GET'] )
-def addUser():
-	"""
-	Responds with a webform to add a new user.
-	"""
-	return request.path
+	return render_template(
+		"main.html",
+		title="Users",
+		head="head.html",
+		header="header.html",
+		body=request.path,
+		footer="footer.html" )
 
 
 @app.route( '/users/add', methods=['POST'] )
@@ -86,6 +88,33 @@ def authorizeUser():
 	"""
 	Adds an authorization to a specified user.
 	"""
+	return request.path
+
+
+#########################
+# User interface routes #
+#########################
+
+@app.route( '/users/new', methods=['GET'] )
+def addUser():
+	"""
+	Responds with a webform to add a new user.
+	"""
+	return render_template(
+		"main.html",
+		title="New User",
+		head="head.html",
+		header="header.html",
+		body=request.path,
+		footer="footer.html" )
+
+
+##################################
+# Card terminal interface routes #
+##################################
+
+@app.route( '/users/checkAuthorization', methods=['GET'] )
+def checkUserAuthorization():
 	return request.path
 
 
