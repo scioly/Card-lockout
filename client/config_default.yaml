@@ -1,4 +1,6 @@
 serverAddress: 1.2.3.4
 serverPort: 5555
+timeout: 5
 
-thisDevice: 3DPrinter
+machineID: 0
+machineType: 3DPrinter
