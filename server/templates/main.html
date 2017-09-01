@@ -1,20 +1,21 @@
 <!doctype html>
 <html>
 	<head>
-		{{ head }}
+		<title>{{ title }}</title>
+		{% include head %}
 	</head>
 
 	<body>
 		<header>
-			{{ header }}
+			{% include header %}
 		</header>
 
 		<main>
-			{{ text }}
+			{{ body }}
 		</main>
 
 		<footer>
-			{{ footer }}
+			{% include footer %}
 		</footer>
 	</body>
 </html>
