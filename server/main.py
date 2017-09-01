@@ -15,10 +15,12 @@ import json
 # create the flask app
 app = Flask( __name__ )
 
+
 # a simple hello world route
 @app.route( '/' )
 def hello():
 	return( "<h1><marquee>Hello, world!</marquee></h1>" )
+
 
 # another route demoing how to use the request parameters
 # try "http://localhost:5555/args?1=2&three=four"
@@ -26,9 +28,18 @@ def hello():
 def returnArgs():
 	return( str( request.args ) )
 
+
 #################
 # Server routes #
 #################
+
+
+@app.route( '/login', methods=['GET', 'POST'] )
+def login():
+	"""
+	Responds with a web form to login and grants a session on successful login.
+	"""
+	return request.path
 
 
 @app.route( '/users', methods=['GET'] )
@@ -40,7 +51,7 @@ def users():
 	return request.path
 
 
-@app.route( '/users/add', methods=['POST'] )
+@app.route( '/users/new', methods=['GET'] )
 def addUser():
 	"""
 	Responds with a webform to add a new user.
@@ -48,7 +59,7 @@ def addUser():
 	return request.path
 
 
-@app.route( '/users/new', methods=['POST'] )
+@app.route( '/users/add', methods=['POST'] )
 def newUser():
 	"""
 	Accepts a request to add a user to the database.
