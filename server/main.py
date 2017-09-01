@@ -1,21 +1,39 @@
+# essential Flask modules
 from flask import Flask
+from flask import request
+from flask import render_template
+# for reading the config file
 import yaml
+# for generating SQL queries in pure Python
 import sql
+# for interfacing with the PostgreSQL database
 import psycopg2
+# for generating JSON to send to the client
+import json
 
-app = Flask(__name__)
 
+# create the flask app
+app = Flask( __name__ )
 
-@app.route("/")
+# a simple hello world route
+@app.route( '/' )
 def hello():
-    return "Hello World!"
+    return( "<h1><marquee>Hello, world!</marquee></h1>" )
 
+# another route demoing how to use the request parameters
+# try "http://localhost:5555/args?1=2&three=four"
+@app.route( '/args' )
+def returnArgs():
+    return( str( request.args ) )
 
+# run the app if the namespace is main
 if __name__ == '__main__':
-    # read and return a yaml file (called 'config.yaml' by default) and give it
-    # back as a dictionary
     with open( 'config.yaml' ) as f:
         config = yaml.load( f )
 
-    app.run( host='0.0.0.0', port=config['port'] )
+    # makes your life easier
     app.debug = True
+    # and, run the app
+    app.run( port=config['serverPort'] )
+    # if you get errors, make sure to make a copy of `config_default.yaml` and
+    # call it `config.yaml`
