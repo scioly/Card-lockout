@@ -39,7 +39,13 @@ def login():
 	"""
 	Responds with a web form to login and grants a session on successful login.
 	"""
-	return request.path
+	return render_template(
+		"main.html",
+		title="Login",
+		head="head.html",
+		header="header.html",
+		body=request.path,
+		footer="footer.html" )
 
 
 @app.route( '/users', methods=['GET'] )
